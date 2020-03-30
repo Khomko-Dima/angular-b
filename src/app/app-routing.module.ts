@@ -21,7 +21,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    preloadingStrategy: PreloadAllModules //ленивая загрузка модулей
+    preloadingStrategy: PreloadAllModules // ленивая загрузка модулей
   })],
   exports: [RouterModule]
 })
