@@ -1,9 +1,18 @@
-<nav class="navbar main">
-  <h1>Angular Blog</h1>
-</nav>
+<header>
+  <h1><a routerLink="/">Angular Blog</a></h1>
+  <nav class="links">
+    <ul>
+      <li><a href="#">Posts</a></li>
+      <li><a [routerLink]="['admin', 'login']">Войти</a></li>
+    </ul>
+  </nav>
+  <nav class="main">
+    <a href="#menu"><i class="fas fa-bars"></i></a>
+  </nav>
+</header>
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+
+<router-outlet></router-outlet>
+
 
 

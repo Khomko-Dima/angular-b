@@ -50,7 +50,6 @@ export class AuthService {
       case 'INVALID_PASSWORD':
         this.error$.next('Неверный пароль')
         break
-
     }
     return throwError(error)
   }

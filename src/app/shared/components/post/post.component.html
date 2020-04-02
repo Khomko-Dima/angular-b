@@ -1,14 +1,25 @@
-<div class="card">
-  <div class="card-header">
-    <h2>Post title</h2>
-    <small>25.03.2020</small>
-  </div>
-
-  <div>
-    <small>Lorem</small>
-  </div>
-  <button
-    [routerLink]="['/post', 1234]"
-    class="btn btn-dark"
-  >Открыть</button>
+<div class="col-md-12">
+  <article class="post">
+    <div class="post-header">
+      <div class="title">
+        <h2><a [routerLink]="['/post', 1234]">Lorem ipsum dolor.</a></h2>
+        <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+      </div>
+      <div class="meta">
+        <time class="published" datetime="2015-11-01">Март 28, 2020</time>
+        <a href="#" class="author"><span class="name">Jane Doe</span><img src="../../../../assets/images/avatar.jpg" alt="" /></a>
+      </div>
+    </div>
+    <a href="#" class="image featured"><img src="../../../../assets/images/pic01.jpg" alt="" /></a>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At vitae error voluptatibus libero dignissimos vero consequuntur provident magnam, nam reiciendis ea perspiciatis doloremque odit obcaecati nostrum ab, ut. Molestias, delectus.</p>
+    <div class="post-footer">
+      <a [routerLink]="['/post', 1234]" class="button large">Continue Reading</a>
+      <!-- <ul class="stats">
+        <li><a href="#">General</a></li>
+        <li><i class="fas fa-heart"></i> 28</li>
+        <li><i class="fas fa-comment"></i> 128</li>
+      </ul> -->
+    </div>
+  </article>
 </div>
+

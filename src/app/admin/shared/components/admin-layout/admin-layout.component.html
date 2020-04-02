@@ -1,19 +1,22 @@
-<nav class="navbar bg-primary">
-  <h1>
-    <a routerLink="/">Admin</a>
-  </h1>
-  <ul *ngIf="auth.isAuthenticated()">
-    <li>
-      <a [routerLink]="['/admin', 'dashboard']">Главная</a>
-    </li>
-    <li>
-      <a [routerLink]="['/admin', 'create']">Создать</a>
-    </li>
-    <li>
-      <a href="#" (click)="logout($event)">Выйти</a>
-    </li>
-  </ul>
-</nav>
+<header>
+  <h1><a routerLink="/">Admin</a></h1>
+  <nav class="links">
+    <ul  *ngIf="auth.isAuthenticated()">
+      <li>
+        <a [routerLink]="['/admin', 'dashboard']">Главная</a>
+      </li>
+      <li>
+        <a [routerLink]="['/admin', 'create']">Создать</a>
+      </li>
+      <li>
+        <a href="#" (click)="logout($event)">Выйти</a>
+      </li>
+    </ul>
+  </nav>
+  <nav class="main">
+    <a href="#menu"><i class="fas fa-bars"></i></a>
+  </nav>
+</header>
 
 <div class="container">
   <router-outlet></router-outlet>

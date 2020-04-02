@@ -1,3 +1,65 @@
+// USER VARIABLES SECTION
+
+$accent: #2ebaae // Accent Color
+$fontsize: 16px // Body Font Size
+$textcolor: #646464 // Text Color #
+$system: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
+$roboto: Roboto, sans-serif // Roboto Font Family
+
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 20px
+$gutter: $grid-gutter-width
+
+// IMPORT SECTION
+
+@import 'node_modules/bootstrap/scss/bootstrap-reboot.scss' // Bootstrap Reboot collection
+@import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss' // Bootstrap Breakpoints mixin
+@import 'node_modules/bootstrap/scss/bootstrap-grid.scss' // Optional Bootstrap Grid
+@import './assets/css/all.min.css'
+// @import 'node_modules/bootstrap/scss/utilities/_sizing.scss' // Optional Bootstrap Utilites
+
+// FONTS LOAD SECTION
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900')
+
+@mixin font($fname, $fstyle, $fweight, $furl)
+  @font-face
+    font-family: $fname
+    font-style: $fstyle
+    font-weight: $fweight
+    font-display: swap // Uncomment to initially display system fonts
+    src: local($fname), url($furl) format('woff2')
+
+@include font('Font Awesome 5 Brands', normal, 400, './assets/fonts/fa-brands-400.woff2')
+@include font('Font Awesome 5 Free', normal, 400, './assets/fonts/fa-regular-400.woff2')
+@include font('Font Awesome 5 Free', normal, 400, './assets/fonts/fa-solid-900.woff2')
+
+// GENERAL DOCUMENT STYLES
+
+::placeholder
+  color: #666
+
+::selection
+  background-color: $accent
+  color: #fff
+
+input, textarea
+  outline: none
+  &:focus:required:invalid
+    border-color: red
+  &:required:valid
+    border-color: green
+
+body
+  font-family: $roboto
+  font-size: $fontsize
+  min-width: 320px
+  position: relative
+  line-height: 1.65
+  overflow-x: hidden
+  color: $textcolor
+  background-color: #f4f4f4
+
 @import url('https://fonts.googleapis.com/css?family=Roboto')
 
 $primary-color: #4048dc
