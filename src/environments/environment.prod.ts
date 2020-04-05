@@ -1,3 +1,3 @@
-export const environment = {
-  production: true
-};
+import {Environment} from './interface';
+
+
