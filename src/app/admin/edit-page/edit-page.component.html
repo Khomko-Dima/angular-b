@@ -1,4 +1,4 @@
-<div *ngIf="form; else loading">
+<div *ngIf="form; else loading" [@slideInDown]>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div
       class="form-control"
@@ -16,14 +16,30 @@
       </div>
     </div>
 
+    <div
+      class="form-control"
+      [ngClass]="{invalid: form.get('description').touched && form.get('description').invalid}"
+    >
+      <label for="description">Описание поста:</label>
+      <textarea id="description" cols="30" rows="5" formControlName="description"></textarea>
+      <div
+        *ngIf="form.get('description').touched && form.get('description').invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('description').errors.required">
+          Введите описание поста
+        </small>
+      </div>
+    </div>
+
     <div class="form-control">
       <quill-editor formControlName="text"></quill-editor>
     </div>
 
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid || submitted">Обновить</button>
+    <button class="button large" type="submit" [disabled]="form.invalid || submitted">Обновить</button>
   </form>
 </div>
 
 <ng-template #loading>
-  <p class="text-center">Идет загрузка...</p>
+  <div class="loader"><p class="text-center">Загрузка</p></div>
 </ng-template>

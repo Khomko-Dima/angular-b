@@ -1,6 +1,6 @@
-<div *ngIf="posts.length; else loading">
+<div *ngIf="posts.length; else loading" class="dashboard" [@slideInDown]>
   <div class="form-control">
-    <input type="text" placeholder="Найти пост..." [(ngModel)]="searchStr">
+    <input type="text" id="search-post" placeholder="Найти пост..." [(ngModel)]="searchStr">
   </div>
   <table>
     <thead>
@@ -14,16 +14,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let post of posts | searchPosts: searchStr; let idx = index">
-        <td>{{idx + 1}}</td>
-        <td>{{post.author}}</td>
-        <td>{{post.title}}</td>
-        <td>{{post.date | date:'medium':null:'ru'}}</td>
+        <td data-label="#">{{idx + 1}}</td>
+        <td data-label="Автор">{{post.author}}</td>
+        <td data-label="Название">{{post.title}}</td>
+        <td data-label="Действие">{{post.date | date:'medium':null:'ru'}}</td>
         <td>
           <button
-            class="btn btn-link open"
+            class="button large"
             [routerLink]="['/admin', 'post', post.id, 'edit']"
           >Открыть</button>
-          <a (click)="remove(post.id)">Удалить</a>
+          <a class="remove" (click)="remove(post.id)">Удалить</a>
         </td>
       </tr>
     </tbody>
@@ -31,5 +31,5 @@
 </div>
 
 <ng-template #loading>
-  <p class="text-center">Идет загрузка...</p>
+  <div class="loader"><p class="text-center">Загрузка</p></div>
 </ng-template>

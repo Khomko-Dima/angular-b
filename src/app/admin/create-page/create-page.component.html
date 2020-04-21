@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="form" (ngSubmit)="submit()" [@slideInDown]>
   <h1>Создание нового поста</h1>
 
   <div
@@ -17,9 +17,25 @@
     </div>
   </div>
 
+  <div
+    class="form-control"
+    [ngClass]="{invalid: form.get('description').touched && form.get('description').invalid}"
+  >
+    <label for="description">Описание поста:</label>
+    <textarea id="description" cols="30" rows="5" formControlName="description"></textarea>
+    <div
+      *ngIf="form.get('description').touched && form.get('description').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('description').errors.required">
+        Введите описание поста
+      </small>
+    </div>
+  </div>
+
   <div class="form-control">
     <label>Контент поста:</label>
-    <quill-editor formControlName="text"></quill-editor>
+    <quill-editor formControlName="text" class="editor"></quill-editor>
   </div>
 
   <div
@@ -40,7 +56,7 @@
 
   <button
     type="submit"
-    class="btn btn-block btn-dark"
+    class="button large"
     [disabled]="form.invalid"
   >Создать пост</button>
 </form>

@@ -21,7 +21,7 @@ $gutter: $grid-gutter-width
 
 // FONTS LOAD SECTION
 
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900')
+@import url('https://fonts.googleapis.com/css?family=Roboto')
 
 @mixin font($fname, $fstyle, $fweight, $furl)
   @font-face
@@ -30,6 +30,11 @@ $gutter: $grid-gutter-width
     font-weight: $fweight
     font-display: swap // Uncomment to initially display system fonts
     src: local($fname), url($furl) format('woff2')
+
+@include font('Roboto', normal, 400, './assets/fonts/roboto-regular-webfont.woff2')
+@include font('Roboto', italic, 400, './assets/fonts/roboto-italic-webfont.woff2')
+@include font('Roboto', normal, 700, './assets/fonts/roboto-bold-webfont.woff2')
+@include font('Roboto', italic, 700, './assets/fonts/roboto-bolditalic-webfont.woff2')
 
 @include font('Font Awesome 5 Brands', normal, 400, './assets/fonts/fa-brands-400.woff2')
 @include font('Font Awesome 5 Free', normal, 400, './assets/fonts/fa-regular-400.woff2')
@@ -61,7 +66,11 @@ body
   color: $textcolor
   background-color: #f4f4f4
 
-@import url('https://fonts.googleapis.com/css?family=Roboto')
+@import './assets/sass/button'
+@import './assets/sass/post'
+@import './assets/sass/form'
+@import './assets/sass/menu'
+@import './assets/sass/loader'
 
 $primary-color: #4048dc
 $dark-color: #333333
@@ -74,12 +83,6 @@ $success-color: #28a745
   margin: 0
   padding: 0
 
-body
-  font-family: 'Roboto', sans-serif
-  font-size: 1rem
-  line-height: 1.6
-  background-color: #fff
-  color: #333
 
 a
   color: $primary-color
@@ -87,18 +90,15 @@ a
   text-decoration: none
   &:hover
     color: #666
-
 ul
   list-style: none
-
 img
   width: 100%
-
-.container
-  max-width: 1100px
-  margin: auto
+body.is-menu-visible
   overflow: hidden
-  padding: 0 2rem
+  touch-action: none
+  .main
+    opacity: 0.25
 
 .text-primary
   color: $primary-color
@@ -231,66 +231,7 @@ img
 .round-img
   border-radius: 50%
 
-.form-control
-  display: block
-  color: #888
-  margin-bottom: .8rem
-  &.invalid
-    color: red
-    input
-      border-color: red
-  .validation
-    color: red
 
-input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='date'],
-select,
-textarea
-  display: block
-  width: 100%
-  padding: 0.4rem
-  font-size: 1.2rem
-  border: 1px solid #ccc
 
-input[type='submit'],
-button
-  font: inherit
 
-table
-  width: 100%
-  border-collapse: collapse
 
-table th,
-table td
-  padding: 1rem
-  text-align: left
-
-table th
-  background: $light-color
-
-.navbar
-  display: flex
-  justify-content: space-between
-  align-items: center
-  padding: 0.7rem 2rem
-  z-index: 1
-  width: 100%
-  opacity: 0.9
-  margin-bottom: 1rem
-  &.main
-    justify-content: center
-    border-bottom: 1px solid $dark-color
-  ul
-    display: flex
-  li.active a
-    color: $danger-color
-    font-weight: bold
-    cursor: default
-  a
-    color: #fff
-    padding: 0.45rem
-    margin: 0 0.25rem
-    &:hover
-      color: $light-color

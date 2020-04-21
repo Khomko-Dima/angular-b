@@ -1,11 +1,25 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {AlertService} from '../../service/alert.service';
 import {Subscription} from 'rxjs';
+import {transition, trigger, useAnimation} from '@angular/animations';
+import {zoomInLeft} from 'ng-animate';
 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.sass']
+  styleUrls: ['./alert.component.sass'],
+  animations: [
+    trigger('zoomInLeft',
+      [
+        transition(
+          'void => *',
+          useAnimation(zoomInLeft, {
+            params: { timing: 0.5, delay: 0 }
+          })
+        )
+      ]
+    )
+  ]
 })
 export class AlertComponent implements OnInit, OnDestroy {
 

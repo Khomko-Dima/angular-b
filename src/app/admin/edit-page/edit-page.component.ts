@@ -6,11 +6,25 @@ import {Post} from '../../shared/interfaces';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {AlertService} from '../shared/service/alert.service';
+import {transition, trigger, useAnimation} from '@angular/animations';
+import {slideInDown} from 'ng-animate';
 
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
-  styleUrls: ['./edit-page.component.sass']
+  styleUrls: ['./edit-page.component.sass'],
+  animations: [
+    trigger('slideInDown',
+      [
+        transition(
+          '* => *',
+          useAnimation(slideInDown, {
+            params: { timing: 0.5, delay: 0 }
+          })
+        )
+      ]
+    )
+  ]
 })
 export class EditPageComponent implements OnInit, OnDestroy {
 
@@ -35,6 +49,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
       this.post = post
       this.form = new FormGroup({
         title: new FormControl(post.title, Validators.required),
+        description: new FormControl(post.description, Validators.required),
         text: new FormControl(post.text, Validators.required)
       })
     })
@@ -56,7 +71,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
     this.uSub = this.postService.update({
       ...this.post,
       text: this.form.value.text,
-      title: this.form.value.title
+      title: this.form.value.title,
+      description: this.form.value.description
     }).subscribe(() => {
       this.submitted = false
       this.alert.success('Пост обновлен')

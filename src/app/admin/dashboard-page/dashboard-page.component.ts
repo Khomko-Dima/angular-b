@@ -3,11 +3,25 @@ import {PostsService} from '../../shared/posts.service';
 import {Post} from '../../shared/interfaces';
 import {Subscription} from 'rxjs';
 import {AlertService} from '../shared/service/alert.service';
+import {transition, trigger, useAnimation} from '@angular/animations';
+import {slideInDown} from 'ng-animate';
 
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
-  styleUrls: ['./dashboard-page.component.sass']
+  styleUrls: ['./dashboard-page.component.sass'],
+  animations: [
+    trigger('slideInDown',
+      [
+        transition(
+          '* => *',
+          useAnimation(slideInDown, {
+            params: { timing: 0.5, delay: 0 }
+          })
+        )
+      ]
+    )
+  ]
 })
 export class DashboardPageComponent implements OnInit, OnDestroy {
 

@@ -10,6 +10,7 @@ export interface FbAuthResponse {
 export interface Post {
   id?: string
   title: string
+  description: string
   text: string
   author: string
   date: Date

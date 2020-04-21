@@ -1,18 +1,37 @@
 <header>
-  <h1><a routerLink="/">Angular Blog</a></h1>
-  <nav class="links">
-    <ul>
-      <li><a href="#">Posts</a></li>
-      <li><a [routerLink]="['admin', 'login']">Войти</a></li>
-    </ul>
-  </nav>
-  <nav class="main">
-    <a href="#menu"><i class="fas fa-bars"></i></a>
+  <h1><a routerLink="/"><i class="fab fa-angular"></i> Angular Blog</a></h1>
+<!--  <nav class="links">-->
+<!--    <ul>-->
+<!--      <li><a [routerLink]="['admin', 'login']">Войти</a></li>-->
+<!--    </ul>-->
+<!--  </nav>-->
+  <nav class="main" (click)="onClick()">
+    <a><i class="fas fa-bars"></i></a>
   </nav>
 </header>
 
 
 <router-outlet></router-outlet>
+
+<div id="menu" *ngIf="active" [class.active]="active" [@lightSpeedIn]>
+  <div class="close" (click)="onClick()"><i class="fas fa-times"></i></div>
+<!--  <div>-->
+<!--    <ul class="links">-->
+<!--      <li>-->
+<!--        <a href="#">-->
+<!--          <h3>Lorem ipsum</h3>-->
+<!--          <p>Feugiat tempus veroeros dolor</p>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+  <!-- Actions -->
+  <div>
+    <ul class="actions stacked">
+      <li><a class="button large fit" [routerLink]="['admin', 'login']" (click)="onClick()">Войти</a></li>
+    </ul>
+  </div>
+</div>
 
 
 
